@@ -19,7 +19,11 @@ The only other big problem I had was to the scraped information to show up on th
 Includes: 
 1. Mission to Mars Folder
     a. the scraping script called mission_to_mars.ipynb
+    
     b. the python file, scrape_mars.py, that took the scrapping from the jupyter file and put them intoa format to be used to create the new page
+    
     c. the app.py file that runs the flask app
+    
     d. a template folder with the html file for the website
+    
     e. a png image of how the cite looks pre-scrape function
