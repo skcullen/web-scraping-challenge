@@ -17,33 +17,62 @@
             <a class="btn btn-primary" href="/scrape" role="button">Scrape New Data</a>
         </div>
 
+        <br>
 
         <div class= "container">
             <div class= "row">
                 <div class= "col-md-12">
                     <h2>Latest Mars News</h2>
-                    <h3>{{mdata.news_titles}}</h3>
+                    <h5>{{mdata.news_title}}<h5>
+                        <p>{{mdata.news_p}}</p>   
                 </div>
+
+               
             </div>
+
+            <br>
 
 
             <div class= "row">
                 <div class= "col-md-8">
                     <h2>Featured Mars Image</h2>
-                    <img src="{{mdata.news_titles}}" alt="Mars Image">
+                    <img src='{{mdata.featured_image_url}}'>
                 </div>
 
                 <div class= "col-md-4">
                     <h2>Mars Facts</h2>
-                    <table>{{mdata.table|safe}}</table>
+                    {{mdata.metable|safe}}
+                </div>
+            </div>
+
+            <br>
+
+            <div class= "row">
+                <div class= "col-md-12">
+                    <h2>Mars Hemispheres</h2>
                 </div>
             </div>
 
             <div class= "row">
-                <div class= "col-md-12">
-                    <h2></h2>
-                    <table>{{mdata.table|safe}}</table>
+                <div class= "col-sm-3">
+                    <img src={{mdata.hemisphere_image_urls[0].img_url}} alt="Cerberus Picture" class="img-thumbnail">
+                    <h5>{{mdata.hemisphere_image_urls[0]["title"]}}</h5>
+
                 </div>
+                <div class= "col-sm-3">
+                    <img src="{{mdata.hemisphere_image_urls[1].img_url}}" alt="Schiaparelli Picture" class="img-thumbnail">
+                    <h5>{{mdata.hemisphere_image_urls[1]["title"]}}</h5>
+                </div>
+                <div class= "col-sm-3">
+                    <img src="{{mdata.hemisphere_image_urls[2].img_url}}" alt="Syris Major Picture" class="img-thumbnail">
+                    <h5>{{mdata.hemisphere_image_urls[2]["title"]}}</h5>
+                </div>
+                <div class= "col-sm-3">
+                    <img src="{{mdata.hemisphere_image_urls[3].img_url}}" alt="Valles Marineris Picture" class="img-thumbnail">
+                    <h5>{{mdata.hemisphere_image_urls[3]["title"]}}</h5>
+                </div>
+
+
             </div>
 
 

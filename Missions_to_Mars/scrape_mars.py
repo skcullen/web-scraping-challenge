@@ -19,11 +19,16 @@ def scrape():
     ##NASA Mars News
     #This was the one that was kinda funky so not everything matches the template
     url = 'https://redplanetscience.com/'
-    response = requests.get(url)
-    soup = BeautifulSoup(response.text, 'html.parser')
-    results = soup.find('div', class_='card-body')
-    news_title = results.text.strip()
+    browser.visit(url)
+    html=browser.html
+    soup = BeautifulSoup(html, 'html.parser')
+    nt = soup.find('div', class_='content_title')
+    news_title = nt.text.strip()
     mmdata['news_title'] = news_title
+    np = soup.find('div', class_='article_teaser_body')
+    news_p = np.text.strip()
+    mmdata['news_p'] = news_p
+
 
     ##JPL Mars Space Image
     url2 = 'https://spaceimages-mars.com/'
@@ -39,7 +44,9 @@ def scrape():
     url3 = 'https://galaxyfacts-mars.com/'
     tables = pd.read_html(url3)
     mars_earth_df = tables[0]
-    m_e_table = mars_earth_df.to_html()
+    me_df = mars_earth_df.rename(columns={0:"Description",1:"Mars",2:"Earth"})
+    m_e_df = me_df.set_index("Description")
+    m_e_table = m_e_df.to_html()
     metable = m_e_table.replace('\n','')
     mmdata['metable'] = metable
 
